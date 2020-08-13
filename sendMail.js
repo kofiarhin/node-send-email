@@ -1,4 +1,5 @@
 var nodemailer = require('nodemailer');
+const config = require("config");
 
 
 function sendMail(address, subject, body) {
@@ -6,13 +7,13 @@ function sendMail(address, subject, body) {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'kofiarhin69@gmail.com',
-            pass: 'Illmatic69'
+            user: config.email,
+            pass: config.password
         }
     });
 
     var mailOptions = {
-        from: 'kofiarhin69@gmail.com',
+        from: config.email,
         to: address,
         subject: subject,
         text: body
